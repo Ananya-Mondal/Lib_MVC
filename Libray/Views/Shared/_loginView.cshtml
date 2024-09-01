@@ -1,0 +1,43 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<ul class="navbar-nav navba-nav-right">
+    <li>
+        <table class="text-end">
+            <tr>
+                <td>
+                    <label>@System.DateTime.Now</label>
+                </td>
+            </tr>
+            @if (Context.Session.GetString("UserName") != null)
+            {
+                <tr>
+                    <td>
+                        @* <label>Welcome : @Context.Session.GetString("UserName")</label> *@
+                        @Html.ActionLink("Welcome: " + @Context.Session.GetString("UserName"), "Edit", "Account", new { id = @Context.Session.GetInt32("UserId") })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Logout", "Logout", "Account", null)
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink("Login", "Login", "Account", null)
+                    </td>
+                </tr>
+                
+            }
+            
+        </table>
+        
+       
+        
+    </li>
+   
+</ul>
